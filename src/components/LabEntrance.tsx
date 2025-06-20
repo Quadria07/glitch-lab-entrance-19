@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -11,7 +10,11 @@ interface FloatingOrb {
   direction: number;
 }
 
-const LabEntrance = () => {
+interface LabEntranceProps {
+  onEnterLab: () => void;
+}
+
+const LabEntrance = ({ onEnterLab }: LabEntranceProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [floatingOrbs, setFloatingOrbs] = useState<FloatingOrb[]>([]);
@@ -87,8 +90,7 @@ const LabEntrance = () => {
 
   const handleEnterLab = () => {
     console.log('Entering the lab...');
-    // Here you would typically navigate to the main page
-    // For now, we'll just log it
+    onEnterLab();
   };
 
   return (
