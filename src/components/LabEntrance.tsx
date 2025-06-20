@@ -85,9 +85,9 @@ const LabEntrance = () => {
       className="relative min-h-screen bg-black overflow-hidden flex items-center justify-center"
       style={{
         background: `
-          radial-gradient(circle at 20% 50%, rgba(0, 255, 159, 0.1) 0%, transparent 50%),
-          radial-gradient(circle at 80% 20%, rgba(0, 153, 255, 0.1) 0%, transparent 50%),
-          radial-gradient(circle at 40% 80%, rgba(153, 0, 255, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+          radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
           linear-gradient(0deg, #000000 0%, #0a0a0a 100%)
         `,
         transform: `translateX(${mousePosition.x * 10}px) translateY(${mousePosition.y * 5}px)`,
@@ -117,14 +117,14 @@ const LabEntrance = () => {
         >
           <div className="relative w-16 h-16">
             {/* Bowler hat shape with image inside */}
-            <div className="absolute inset-0 bg-neon-green rounded-full opacity-20 animate-pulse" />
+            <div className="absolute inset-0 bg-white rounded-full opacity-10 animate-pulse" />
             <div 
-              className="w-full h-full rounded-full border-2 border-neon-green bg-cover bg-center relative overflow-hidden"
+              className="w-full h-full rounded-full border-2 border-white bg-cover bg-center relative overflow-hidden"
               style={{ backgroundImage: `url(${hat.image})` }}
             >
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-50" />
               {/* Bowler hat top */}
-              <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-8 h-6 bg-neon-green rounded-t-full opacity-60" />
+              <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-8 h-6 bg-white rounded-t-full opacity-60" />
             </div>
           </div>
         </div>
@@ -137,7 +137,7 @@ const LabEntrance = () => {
           className="absolute pointer-events-none"
           style={{ left: ripple.x, top: ripple.y }}
         >
-          <div className="w-4 h-4 border-2 border-neon-green rounded-full animate-ripple" />
+          <div className="w-4 h-4 border-2 border-white rounded-full animate-ripple" />
         </div>
       ))}
 
@@ -150,7 +150,7 @@ const LabEntrance = () => {
             alt="Artheist Labs Logo"
             className="mx-auto max-w-xs md:max-w-md lg:max-w-lg animate-glow"
             style={{
-              filter: 'drop-shadow(0 0 20px rgba(0, 255, 159, 0.5))'
+              filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))'
             }}
           />
         </div>
@@ -163,31 +163,31 @@ const LabEntrance = () => {
             onMouseLeave={() => setIsHovering(false)}
             className="
               relative px-12 py-6 text-xl font-bold tracking-wider
-              bg-transparent border-2 border-neon-green text-neon-green
-              hover:bg-neon-green hover:text-black
+              bg-transparent border-2 border-white text-white
+              hover:bg-white hover:text-black
               transition-all duration-300 ease-out
               glitch-text hover:animate-melt
               group overflow-hidden
             "
             style={{
-              textShadow: '0 0 10px rgba(0, 255, 159, 0.8)',
+              textShadow: '0 0 10px rgba(255, 255, 255, 0.8)',
               boxShadow: `
-                0 0 20px rgba(0, 255, 159, 0.3),
-                inset 0 0 20px rgba(0, 255, 159, 0.1)
+                0 0 20px rgba(255, 255, 255, 0.2),
+                inset 0 0 20px rgba(255, 255, 255, 0.05)
               `
             }}
           >
             <span className="relative z-10">ENTER THE LAB</span>
             
             {/* Glitch overlay effect */}
-            <div className="absolute inset-0 bg-neon-green opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
             
             {/* Smoke/melt effect on hover */}
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-neon-green to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300" />
           </Button>
           
           {/* Subtitle */}
-          <p className="mt-6 text-sm text-neon-green/60 font-mono tracking-widest animate-pulse">
+          <p className="mt-6 text-sm text-white/60 font-mono tracking-widest animate-pulse">
             WHERE DIGITAL ART IS BORN
           </p>
         </div>
@@ -198,7 +198,7 @@ const LabEntrance = () => {
         {[...Array(50)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-neon-green rounded-full animate-pulse"
+            className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -214,8 +214,8 @@ const LabEntrance = () => {
         className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(0, 255, 159, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 255, 159, 0.1) 1px, transparent 1px)
+            linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
           `,
           backgroundSize: '50px 50px',
           transform: `translateX(${mousePosition.x * 5}px) translateY(${mousePosition.y * 5}px)`,

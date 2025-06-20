@@ -16,7 +16,7 @@
     --popover: 0 0% 5%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 158 100% 50%;
+    --primary: 0 0% 100%;
     --primary-foreground: 0 0% 3%;
 
     --secondary: 210 40% 96.1%;
@@ -68,7 +68,7 @@
   left: 0;
   width: 32px;
   height: 32px;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><ellipse cx="50" cy="85" rx="45" ry="15" fill="%23000"/><ellipse cx="50" cy="50" rx="40" ry="25" fill="%2300ff9f"/><ellipse cx="50" cy="45" rx="35" ry="20" fill="%23000"/><rect x="45" y="30" width="10" height="15" fill="%2300ff9f"/></svg>') no-repeat center;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><ellipse cx="50" cy="85" rx="45" ry="15" fill="%23000"/><ellipse cx="50" cy="50" rx="40" ry="25" fill="%23fff"/><ellipse cx="50" cy="45" rx="35" ry="20" fill="%23000"/><rect x="45" y="30" width="10" height="15" fill="%23fff"/></svg>') no-repeat center;
   background-size: contain;
   pointer-events: none;
   z-index: 9999;
@@ -77,31 +77,31 @@
 
 .custom-cursor.hover {
   transform: scale(1.5);
-  filter: drop-shadow(0 0 10px #00ff9f);
+  filter: drop-shadow(0 0 10px #fff);
 }
 
 /* Glitch text effect */
 @keyframes glitch-text {
   0% {
-    text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff, 0.025em 0.04em 0 #fffc00;
+    text-shadow: 0.05em 0 0 #fff, -0.03em -0.04em 0 #000, 0.025em 0.04em 0 #fff;
   }
   15% {
-    text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff, 0.025em 0.04em 0 #fffc00;
+    text-shadow: 0.05em 0 0 #fff, -0.03em -0.04em 0 #000, 0.025em 0.04em 0 #fff;
   }
   16% {
-    text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff, -0.05em -0.05em 0 #fffc00;
+    text-shadow: -0.05em -0.025em 0 #fff, 0.025em 0.035em 0 #000, -0.05em -0.05em 0 #fff;
   }
   49% {
-    text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff, -0.05em -0.05em 0 #fffc00;
+    text-shadow: -0.05em -0.025em 0 #fff, 0.025em 0.035em 0 #000, -0.05em -0.05em 0 #fff;
   }
   50% {
-    text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff, 0 -0.04em 0 #fffc00;
+    text-shadow: 0.05em 0.035em 0 #fff, 0.03em 0 0 #000, 0 -0.04em 0 #fff;
   }
   99% {
-    text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff, 0 -0.04em 0 #fffc00;
+    text-shadow: 0.05em 0.035em 0 #fff, 0.03em 0 0 #000, 0 -0.04em 0 #fff;
   }
   100% {
-    text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff, -0.04em -0.025em 0 #fffc00;
+    text-shadow: -0.05em 0 0 #fff, -0.025em -0.04em 0 #000, -0.04em -0.025em 0 #fff;
   }
 }
 

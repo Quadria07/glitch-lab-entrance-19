@@ -62,12 +62,6 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				},
-				neon: {
-					green: '#00ff9f',
-					blue: '#0099ff',
-					purple: '#9900ff',
-					pink: '#ff0099'
 				}
 			},
 			borderRadius: {
@@ -110,12 +104,12 @@ export default {
 				},
 				'glow': {
 					'0%, 100%': {
-						textShadow: '0 0 5px #00ff9f, 0 0 10px #00ff9f, 0 0 15px #00ff9f',
-						boxShadow: '0 0 5px #00ff9f'
+						textShadow: '0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff',
+						boxShadow: '0 0 5px #fff'
 					},
 					'50%': {
-						textShadow: '0 0 10px #00ff9f, 0 0 20px #00ff9f, 0 0 30px #00ff9f',
-						boxShadow: '0 0 15px #00ff9f'
+						textShadow: '0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff',
+						boxShadow: '0 0 15px #fff'
 					}
 				},
 				'float': {
