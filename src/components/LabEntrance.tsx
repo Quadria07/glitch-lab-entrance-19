@@ -2,27 +2,21 @@
 import { useEffect, useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 
-interface FallingHat {
+interface FloatingOrb {
   id: number;
-  left: number;
-  delay: number;
-  image: string;
+  x: number;
+  y: number;
+  size: number;
+  speed: number;
+  direction: number;
 }
 
 const LabEntrance = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
-  const [fallingHats, setFallingHats] = useState<FallingHat[]>([]);
+  const [floatingOrbs, setFloatingOrbs] = useState<FloatingOrb[]>([]);
   const [ripples, setRipples] = useState<Array<{ id: number; x: number; y: number }>>([]);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  // Sample images for the falling hats (using placeholder images with different themes)
-  const hatImages = [
-    'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=100&h=100&fit=crop&crop=center',
-    'https://images.unsplash.com/photo-1518770660439-4636190af475?w=100&h=100&fit=crop&crop=center',
-    'https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=100&h=100&fit=crop&crop=center',
-    'https://images.unsplash.com/photo-1500673922987-e212871fec22?w=100&h=100&fit=crop&crop=center',
-  ];
 
   // Track mouse movement for parallax effect
   useEffect(() => {
@@ -37,24 +31,42 @@ const LabEntrance = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Create falling hats at intervals
+  // Create floating orbs
   useEffect(() => {
-    const createHat = () => {
-      const newHat: FallingHat = {
-        id: Date.now() + Math.random(),
-        left: Math.random() * 100,
-        delay: Math.random() * 2,
-        image: hatImages[Math.floor(Math.random() * hatImages.length)],
-      };
-      setFallingHats(prev => [...prev, newHat]);
-
-      // Remove hat after animation completes
-      setTimeout(() => {
-        setFallingHats(prev => prev.filter(hat => hat.id !== newHat.id));
-      }, 8000);
+    const createOrbs = () => {
+      const orbs: FloatingOrb[] = [];
+      for (let i = 0; i < 15; i++) {
+        orbs.push({
+          id: i,
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          size: Math.random() * 4 + 2,
+          speed: Math.random() * 0.5 + 0.2,
+          direction: Math.random() * Math.PI * 2,
+        });
+      }
+      setFloatingOrbs(orbs);
     };
 
-    const interval = setInterval(createHat, 800);
+    createOrbs();
+    window.addEventListener('resize', createOrbs);
+    return () => window.removeEventListener('resize', createOrbs);
+  }, []);
+
+  // Animate floating orbs
+  useEffect(() => {
+    const animateOrbs = () => {
+      setFloatingOrbs(prev => prev.map(orb => ({
+        ...orb,
+        x: orb.x + Math.cos(orb.direction) * orb.speed,
+        y: orb.y + Math.sin(orb.direction) * orb.speed,
+        direction: orb.x < 0 || orb.x > window.innerWidth || orb.y < 0 || orb.y > window.innerHeight 
+          ? orb.direction + Math.PI 
+          : orb.direction + (Math.random() - 0.5) * 0.1
+      })));
+    };
+
+    const interval = setInterval(animateOrbs, 50);
     return () => clearInterval(interval);
   }, []);
 
@@ -82,13 +94,13 @@ const LabEntrance = () => {
   return (
     <div 
       ref={containerRef}
-      className="relative min-h-screen bg-black overflow-hidden flex items-center justify-center"
+      className="relative min-h-screen bg-white overflow-hidden flex items-center justify-center"
       style={{
         background: `
-          radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-          radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
-          radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
-          linear-gradient(0deg, #000000 0%, #0a0a0a 100%)
+          radial-gradient(circle at 20% 50%, rgba(0, 0, 0, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
+          radial-gradient(circle at 40% 80%, rgba(0, 0, 0, 0.04) 0%, transparent 50%),
+          linear-gradient(0deg, #ffffff 0%, #f5f5f5 100%)
         `,
         transform: `translateX(${mousePosition.x * 10}px) translateY(${mousePosition.y * 5}px)`,
         transition: 'transform 0.1s ease-out'
@@ -104,29 +116,19 @@ const LabEntrance = () => {
         }}
       />
 
-      {/* Falling hats animation */}
-      {fallingHats.map(hat => (
+      {/* Floating orbs animation */}
+      {floatingOrbs.map(orb => (
         <div
-          key={hat.id}
-          className="absolute animate-fall"
+          key={orb.id}
+          className="absolute animate-pulse"
           style={{
-            left: `${hat.left}%`,
-            animationDelay: `${hat.delay}s`,
-            top: '-100px',
+            left: `${orb.x}px`,
+            top: `${orb.y}px`,
+            width: `${orb.size}px`,
+            height: `${orb.size}px`,
           }}
         >
-          <div className="relative w-16 h-16">
-            {/* Bowler hat shape with image inside */}
-            <div className="absolute inset-0 bg-white rounded-full opacity-10 animate-pulse" />
-            <div 
-              className="w-full h-full rounded-full border-2 border-white bg-cover bg-center relative overflow-hidden"
-              style={{ backgroundImage: `url(${hat.image})` }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-50" />
-              {/* Bowler hat top */}
-              <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-8 h-6 bg-white rounded-t-full opacity-60" />
-            </div>
-          </div>
+          <div className="w-full h-full bg-black rounded-full opacity-20" />
         </div>
       ))}
 
@@ -137,7 +139,7 @@ const LabEntrance = () => {
           className="absolute pointer-events-none"
           style={{ left: ripple.x, top: ripple.y }}
         >
-          <div className="w-4 h-4 border-2 border-white rounded-full animate-ripple" />
+          <div className="w-4 h-4 border-2 border-black rounded-full animate-ripple" />
         </div>
       ))}
 
@@ -150,7 +152,7 @@ const LabEntrance = () => {
             alt="Artheist Labs Logo"
             className="mx-auto max-w-xs md:max-w-md lg:max-w-lg animate-glow"
             style={{
-              filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))'
+              filter: 'drop-shadow(0 0 20px rgba(0, 0, 0, 0.3))'
             }}
           />
         </div>
@@ -163,32 +165,32 @@ const LabEntrance = () => {
             onMouseLeave={() => setIsHovering(false)}
             className="
               relative px-12 py-6 text-xl font-bold tracking-wider
-              bg-transparent border-2 border-white text-white
-              hover:bg-white hover:text-black
+              bg-transparent border-2 border-black text-black
+              hover:bg-black hover:text-white
               transition-all duration-300 ease-out
               glitch-text hover:animate-melt
               group overflow-hidden
             "
             style={{
-              textShadow: '0 0 10px rgba(255, 255, 255, 0.8)',
+              textShadow: '0 0 10px rgba(0, 0, 0, 0.8)',
               boxShadow: `
-                0 0 20px rgba(255, 255, 255, 0.2),
-                inset 0 0 20px rgba(255, 255, 255, 0.05)
+                0 0 20px rgba(0, 0, 0, 0.2),
+                inset 0 0 20px rgba(0, 0, 0, 0.05)
               `
             }}
           >
             <span className="relative z-10">ENTER THE LAB</span>
             
             {/* Glitch overlay effect */}
-            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
             
             {/* Smoke/melt effect on hover */}
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-black to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300" />
           </Button>
           
           {/* Subtitle */}
-          <p className="mt-6 text-sm text-white/60 font-mono tracking-widest animate-pulse">
-            WHERE DIGITAL ART IS BORN
+          <p className="mt-6 text-sm text-black/60 font-mono tracking-widest animate-pulse">
+            WE MAKE ARRY'S NFT
           </p>
         </div>
       </div>
@@ -198,12 +200,13 @@ const LabEntrance = () => {
         {[...Array(50)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
+            className="absolute w-1 h-1 bg-black rounded-full animate-pulse"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 3}s`,
               animationDuration: `${2 + Math.random() * 3}s`,
+              opacity: 0.3,
             }}
           />
         ))}
@@ -214,8 +217,8 @@ const LabEntrance = () => {
         className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+            linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px)
           `,
           backgroundSize: '50px 50px',
           transform: `translateX(${mousePosition.x * 5}px) translateY(${mousePosition.y * 5}px)`,
