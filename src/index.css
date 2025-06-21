@@ -53,9 +53,14 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+  }
+
   body {
     @apply bg-background text-foreground;
-    font-family: 'Orbitron', 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     cursor: none;
   }
 
@@ -65,23 +70,7 @@
   }
 }
 
-/* Simple custom cursor */
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  background: black;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.1s ease;
-  transform: translate(-50%, -50%);
-}
-
-/* Glitch text effect */
+/* Enhanced glitch text effect */
 @keyframes glitch-text {
   0% {
     text-shadow: 0.05em 0 0 #000, -0.03em -0.04em 0 #000, 0.025em 0.04em 0 #000;
@@ -124,4 +113,35 @@ body::after {
 
 .animate-fade-in {
   animation: fade-in 0.6s ease-out forwards;
+}
+
+/* Enhanced scroll animations */
+@keyframes scroll-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  animation: scroll-reveal 0.8s ease-out forwards;
+}
+
+/* Smooth scrolling sections */
+section {
+  scroll-snap-align: start;
+}
+
+/* Background pattern animation */
+@keyframes pattern-shift {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+.animate-pattern {
+  animation: pattern-shift 20s linear infinite;
 }
