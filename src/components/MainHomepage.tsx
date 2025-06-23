@@ -53,9 +53,9 @@ const MainHomepage = () => {
   return (
     <div className="bg-white text-black overflow-x-hidden">
       {/* Fixed Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black transform transition-all duration-500">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="w-20 h-10">
+          <div className="w-20 h-10 transform transition-transform duration-300 hover:scale-110">
             <img
               src="https://www.artheistlabs.com/wp-content/uploads/2025/04/ARTHEIST-LOGO-ANI2.gif"
               alt="Artheist Labs"
@@ -63,14 +63,15 @@ const MainHomepage = () => {
             />
           </div>
           <div className="flex space-x-8 font-mono text-sm">
-            {['About', 'Team', 'NFT', 'Contact'].map((item) => (
+            {['About', 'Team', 'NFT', 'Contact'].map((item, index) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="relative group hover:text-black transition-colors duration-300"
+                className="relative group hover:text-black transition-all duration-500 transform hover:scale-110"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 {item}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-500 group-hover:w-full" />
               </a>
             ))}
           </div>
@@ -85,76 +86,53 @@ const MainHomepage = () => {
         style={{ scrollSnapAlign: 'start' }}
       >
         <div className="text-center relative max-w-6xl mx-auto px-6">
-          <h1 className={`text-4xl md:text-6xl font-black mb-4 transition-all duration-1000 ${
+          <h1 className={`text-4xl md:text-6xl font-black mb-4 transition-all duration-1500 ${
             isVisible('hero') 
-              ? 'opacity-100 transform translate-y-0' 
-              : 'opacity-0 transform translate-y-10'
+              ? 'opacity-100 transform translate-y-0 rotate-0' 
+              : 'opacity-0 transform translate-y-20 rotate-1'
           }`}>
-            <span className="inline-block glitch-text">ARTHEIST LABS</span>
+            <span className="inline-block glitch-text animate-pulse">ARTHEIST LABS</span>
           </h1>
           
-          <h2 className={`text-2xl md:text-4xl font-bold mb-8 transition-all duration-1000 delay-300 ${
+          <h2 className={`text-2xl md:text-4xl font-bold mb-8 transition-all duration-1500 delay-300 ${
             isVisible('hero') 
-              ? 'opacity-100 transform translate-y-0' 
-              : 'opacity-0 transform translate-y-10'
+              ? 'opacity-100 transform translate-y-0 scale-100' 
+              : 'opacity-0 transform translate-y-20 scale-95'
           }`}>
             We Make Arry's NFT
           </h2>
 
-          <p className={`text-lg md:text-xl mb-12 max-w-4xl mx-auto leading-relaxed transition-all duration-1000 delay-500 ${
+          <p className={`text-lg md:text-xl mb-12 max-w-4xl mx-auto leading-relaxed transition-all duration-1500 delay-500 ${
             isVisible('hero') 
               ? 'opacity-100 transform translate-y-0' 
-              : 'opacity-0 transform translate-y-10'
+              : 'opacity-0 transform translate-y-20'
           }`}>
             Creative powerhouse behind Arry's NFT, pioneering innovation at the intersection of art, technology, and blockchain. As the dedicated research and development hub, we focus on pushing the boundaries of digital art, NFT utilities, and immersive Web3 experiences.
           </p>
 
-          <div className={`transition-all duration-1000 delay-700 ${
+          <div className={`transition-all duration-1500 delay-700 ${
             isVisible('hero') 
-              ? 'opacity-100 transform scale-100' 
-              : 'opacity-0 transform scale-95'
+              ? 'opacity-100 transform scale-100 rotate-0' 
+              : 'opacity-0 transform scale-90 rotate-12'
           }`}>
             <img
               src="https://www.artheistlabs.com/wp-content/uploads/2025/04/BALL-ROTATE.gif"
               alt="Rotating Ball Animation"
-              className="mx-auto max-w-xs animate-float"
+              className="mx-auto max-w-xs animate-float hover:scale-110 transition-transform duration-500"
             />
           </div>
         </div>
 
-        {/* Floating Banner */}
-        <div className="absolute top-1/2 left-4 transform -translate-y-1/2 rotate-90 origin-left">
-          <p className="text-xs font-mono opacity-60">No Wahala, just NFTs & vibes | Naija sauce</p>
+        {/* Floating Banner with enhanced animation */}
+        <div className={`absolute top-1/2 left-4 transform -translate-y-1/2 rotate-90 origin-left transition-all duration-1000 ${
+          isVisible('hero') ? 'opacity-60 translate-x-0' : 'opacity-0 -translate-x-10'
+        }`}>
+          <p className="text-xs font-mono">No Wahala, just NFTs & vibes | Naija sauce</p>
         </div>
 
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-black rounded-full flex justify-center">
+          <div className="w-6 h-10 border-2 border-black rounded-full flex justify-center hover:scale-110 transition-transform duration-300">
             <div className="w-1 h-3 bg-black rounded-full mt-2 animate-pulse" />
-          </div>
-        </div>
-      </section>
-
-      {/* Video Section */}
-      <section 
-        id="video" 
-        data-scroll-section
-        className="py-20 px-6"
-        style={{ scrollSnapAlign: 'start' }}
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <div className={`transition-all duration-1000 ${
-            isVisible('video') 
-              ? 'opacity-100 transform translate-y-0' 
-              : 'opacity-0 transform translate-y-10'
-          }`}>
-            <video 
-              className="w-full max-w-3xl mx-auto border-2 border-black"
-              controls
-              poster="/placeholder.svg"
-            >
-              <source src="https://www.artheistlabs.com/wp-content/uploads/2025/02/Artheist-video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
           </div>
         </div>
       </section>
@@ -167,37 +145,37 @@ const MainHomepage = () => {
         style={{ scrollSnapAlign: 'start' }}
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className={`text-4xl md:text-5xl font-black text-center mb-16 transition-all duration-1000 ${
+          <h2 className={`text-4xl md:text-5xl font-black text-center mb-16 transition-all duration-1500 ${
             isVisible('vision') 
-              ? 'opacity-100 transform translate-y-0' 
-              : 'opacity-0 transform translate-y-10'
+              ? 'opacity-100 transform translate-y-0 scale-100' 
+              : 'opacity-0 transform translate-y-20 scale-95'
           }`}>
             OUR VISION
-            <div className={`h-1 bg-black mx-auto mt-4 transition-all duration-1000 delay-300 ${
-              isVisible('vision') ? 'w-32' : 'w-0'
+            <div className={`h-1 bg-black mx-auto mt-4 transition-all duration-1500 delay-300 ${
+              isVisible('vision') ? 'w-32 opacity-100' : 'w-0 opacity-0'
             }`} />
           </h2>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className={`transition-all duration-1000 delay-500 ${
+            <div className={`transition-all duration-1500 delay-500 ${
               isVisible('vision') 
-                ? 'opacity-100 transform translate-x-0' 
-                : 'opacity-0 transform -translate-x-10'
+                ? 'opacity-100 transform translate-x-0 rotate-0' 
+                : 'opacity-0 transform -translate-x-20 rotate-2'
             }`}>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed transform transition-all duration-300 hover:scale-105">
                 At Artheist Labs, we envision Arry's NFT as a brand that seamlessly blends digital art with immersive Web3 experiences and real-world utility. Our goal is to redefine the NFT landscape by fostering a community-driven ecosystem where art, technology, and innovation converge.
               </p>
             </div>
             
-            <div className={`transition-all duration-1000 delay-700 ${
+            <div className={`transition-all duration-1500 delay-700 ${
               isVisible('vision') 
-                ? 'opacity-100 transform translate-x-0' 
-                : 'opacity-0 transform translate-x-10'
+                ? 'opacity-100 transform translate-x-0 scale-100' 
+                : 'opacity-0 transform translate-x-20 scale-90'
             }`}>
               <img
                 src="https://www.artheistlabs.com/wp-content/uploads/2025/04/WEBSITE-ANIMATIONS-5-1.gif"
                 alt="Vision Animation"
-                className="w-full max-w-md mx-auto"
+                className="w-full max-w-md mx-auto hover:scale-110 transition-transform duration-500 animate-float"
               />
             </div>
           </div>
@@ -212,38 +190,42 @@ const MainHomepage = () => {
         style={{ scrollSnapAlign: 'start' }}
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className={`text-4xl md:text-5xl font-black text-center mb-16 transition-all duration-1000 ${
+          <h2 className={`text-4xl md:text-5xl font-black text-center mb-16 transition-all duration-1500 ${
             isVisible('commitment') 
               ? 'opacity-100 transform translate-y-0' 
-              : 'opacity-0 transform translate-y-10'
+              : 'opacity-0 transform translate-y-20'
           }`}>
             OUR COMMITMENT
           </h2>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className={`order-2 md:order-1 transition-all duration-1000 delay-500 ${
+            <div className={`order-2 md:order-1 transition-all duration-1500 delay-500 ${
               isVisible('commitment') 
-                ? 'opacity-100 transform translate-x-0' 
-                : 'opacity-0 transform -translate-x-10'
+                ? 'opacity-100 transform translate-x-0 scale-100' 
+                : 'opacity-0 transform -translate-x-20 scale-90'
             }`}>
               <img
                 src="https://www.artheistlabs.com/wp-content/uploads/2025/04/WEBSITE-ANIMATIONS-3-1.gif"
                 alt="Commitment Animation"
-                className="w-full max-w-md mx-auto"
+                className="w-full max-w-md mx-auto hover:scale-110 transition-transform duration-500 animate-float"
               />
             </div>
             
-            <div className={`order-1 md:order-2 transition-all duration-1000 delay-700 ${
+            <div className={`order-1 md:order-2 transition-all duration-1500 delay-700 ${
               isVisible('commitment') 
                 ? 'opacity-100 transform translate-x-0' 
-                : 'opacity-0 transform translate-x-10'
+                : 'opacity-0 transform translate-x-20'
             }`}>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed transform transition-all duration-300 hover:scale-105">
                 We believe NFTs are more than digital assets; they are a gateway to creativity, ownership, and digital transformation. At Artheist Labs, we are committed to pushing the boundaries of NFT utilities, ensuring our creations offer value beyond aesthetics. Through artistic expression and blockchain technology, we are bringing back the modern gentleman.
               </p>
               
-              {/* Floating text overlay */}
-              <div className="mt-8 p-4 border border-black bg-white/80">
+              {/* Floating text overlay with enhanced animation */}
+              <div className={`mt-8 p-4 border border-black bg-white/80 transition-all duration-1000 delay-1000 ${
+                isVisible('commitment') 
+                  ? 'opacity-100 transform translate-y-0 scale-100' 
+                  : 'opacity-0 transform translate-y-10 scale-95'
+              } hover:shadow-lg hover:scale-105`}>
                 <p className="text-sm font-mono">They are a gateway to creativity, innovation, and real-world utility, unlocking exclusive experiences and opportunities while bridging the gap between art and technology.</p>
               </div>
             </div>
@@ -259,29 +241,29 @@ const MainHomepage = () => {
         style={{ scrollSnapAlign: 'start' }}
       >
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className={`text-4xl md:text-5xl font-black mb-16 transition-all duration-1000 ${
+          <h2 className={`text-4xl md:text-5xl font-black mb-16 transition-all duration-1500 ${
             isVisible('mission') 
-              ? 'opacity-100 transform translate-y-0' 
-              : 'opacity-0 transform translate-y-10'
+              ? 'opacity-100 transform translate-y-0 rotate-0' 
+              : 'opacity-0 transform translate-y-20 rotate-1'
           }`}>
             OUR MISSION
           </h2>
           
-          <p className={`text-lg leading-relaxed max-w-4xl mx-auto transition-all duration-1000 delay-500 ${
+          <p className={`text-lg leading-relaxed max-w-4xl mx-auto transition-all duration-1500 delay-500 ${
             isVisible('mission') 
-              ? 'opacity-100 transform translate-y-0' 
-              : 'opacity-0 transform translate-y-10'
-          }`}>
+              ? 'opacity-100 transform translate-y-0 scale-100' 
+              : 'opacity-0 transform translate-y-20 scale-95'
+          } hover:scale-105 duration-300`}>
             Our mission is to revolutionize the NFT space while driving real-world impact. Arry's NFT Collection serves as a funding backbone for TFCo, a movement dedicated to reviving the modern gentleman. By merging art, utility, and purpose, we empower a community of visionaries who embrace creativity, individuality, and the values that define true excellence.
           </p>
 
-          {/* Floating Banner */}
-          <div className={`mt-12 transition-all duration-1000 delay-700 ${
+          {/* Enhanced Floating Banner */}
+          <div className={`mt-12 transition-all duration-1500 delay-700 ${
             isVisible('mission') 
-              ? 'opacity-100 transform scale-100' 
-              : 'opacity-0 transform scale-95'
+              ? 'opacity-100 transform scale-100 rotate-0' 
+              : 'opacity-0 transform scale-90 rotate-3'
           }`}>
-            <div className="inline-block p-4 border-2 border-black bg-black text-white font-mono text-sm">
+            <div className="inline-block p-4 border-2 border-black bg-black text-white font-mono text-sm hover:bg-white hover:text-black transition-all duration-500 hover:scale-110 animate-pulse">
               The heist has begun | 2025 Flex | #Creative Heist
             </div>
           </div>
@@ -296,10 +278,10 @@ const MainHomepage = () => {
         style={{ scrollSnapAlign: 'start' }}
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className={`text-4xl md:text-5xl font-black text-center mb-16 transition-all duration-1000 ${
+          <h2 className={`text-4xl md:text-5xl font-black text-center mb-16 transition-all duration-1500 ${
             isVisible('nft') 
-              ? 'opacity-100 transform translate-y-0' 
-              : 'opacity-0 transform translate-y-10'
+              ? 'opacity-100 transform translate-y-0 scale-100' 
+              : 'opacity-0 transform translate-y-20 scale-95'
           }`}>
             WHAT ARE NFTs?
           </h2>
@@ -312,18 +294,18 @@ const MainHomepage = () => {
             ].map((item, index) => (
               <div 
                 key={index}
-                className={`text-center transition-all duration-1000 ${
+                className={`text-center transition-all duration-1500 hover:scale-110 ${
                   isVisible('nft') 
-                    ? 'opacity-100 transform translate-y-0' 
-                    : 'opacity-0 transform translate-y-20'
+                    ? 'opacity-100 transform translate-y-0 rotate-0' 
+                    : 'opacity-0 transform translate-y-30 rotate-2'
                 }`}
-                style={{ transitionDelay: `${index * 200}ms` }}
+                style={{ transitionDelay: `${index * 300}ms` }}
               >
-                <div className="w-24 h-24 border-2 border-black mx-auto mb-6 flex items-center justify-center">
-                  <div className="w-12 h-12 bg-black animate-pulse" />
+                <div className="w-24 h-24 border-2 border-black mx-auto mb-6 flex items-center justify-center hover:rotate-45 transition-transform duration-500">
+                  <div className="w-12 h-12 bg-black animate-pulse hover:animate-spin" />
                 </div>
-                <h3 className="font-black text-xl mb-4">{item.title}</h3>
-                <p className="text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="font-black text-xl mb-4 hover:glitch-text transition-all duration-300">{item.title}</h3>
+                <p className="text-sm leading-relaxed hover:scale-105 transition-transform duration-300">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -338,20 +320,24 @@ const MainHomepage = () => {
         style={{ scrollSnapAlign: 'start' }}
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className={`text-4xl md:text-5xl font-black text-center mb-16 transition-all duration-1000 ${
+          <h2 className={`text-4xl md:text-5xl font-black text-center mb-16 transition-all duration-1500 ${
             isVisible('team') 
-              ? 'opacity-100 transform translate-y-0' 
-              : 'opacity-0 transform translate-y-10'
+              ? 'opacity-100 transform translate-y-0 scale-100' 
+              : 'opacity-0 transform translate-y-20 scale-95'
           }`}>
             MEET OUR TEAM OF ALCHEMISTS
           </h2>
           
-          {/* Follow Us GIF */}
-          <div className="text-center mb-16">
+          {/* Follow Us GIF with enhanced animation */}
+          <div className={`text-center mb-16 transition-all duration-1500 delay-300 ${
+            isVisible('team') 
+              ? 'opacity-100 transform scale-100 rotate-0' 
+              : 'opacity-0 transform scale-90 rotate-3'
+          }`}>
             <img
               src="https://www.artheistlabs.com/wp-content/uploads/2025/04/Follow-Us-4.gif"
               alt="Follow Us"
-              className="mx-auto max-w-md"
+              className="mx-auto max-w-md hover:scale-110 transition-transform duration-500 animate-float"
             />
           </div>
           
@@ -359,22 +345,22 @@ const MainHomepage = () => {
             {teamMembers.map((member, index) => (
               <div 
                 key={index}
-                className={`group cursor-pointer transition-all duration-1000 ${
+                className={`group cursor-pointer transition-all duration-1500 hover:scale-110 ${
                   isVisible('team') 
-                    ? 'opacity-100 transform translate-y-0' 
-                    : 'opacity-0 transform translate-y-20'
+                    ? 'opacity-100 transform translate-y-0 rotate-0' 
+                    : 'opacity-0 transform translate-y-30 rotate-2'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden hover:shadow-2xl transition-shadow duration-500">
                   <img
                     src={member.img}
                     alt={member.name}
-                    className="w-full aspect-square object-cover border-2 border-black group-hover:scale-110 group-hover:animate-glitch transition-all duration-500"
+                    className="w-full aspect-square object-cover border-2 border-black group-hover:scale-125 group-hover:rotate-3 group-hover:animate-glitch transition-all duration-700"
                   />
-                  <div className="absolute inset-0 bg-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="text-white text-center p-2">
-                      <h3 className="font-bold text-sm mb-1">{member.name}</h3>
+                  <div className="absolute inset-0 bg-black/90 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center transform group-hover:scale-105">
+                    <div className="text-white text-center p-2 transform group-hover:scale-110 transition-transform duration-300">
+                      <h3 className="font-bold text-sm mb-1 animate-pulse">{member.name}</h3>
                       <p className="text-xs">{member.role}</p>
                     </div>
                   </div>
@@ -393,22 +379,22 @@ const MainHomepage = () => {
         style={{ scrollSnapAlign: 'start' }}
       >
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className={`text-5xl md:text-6xl font-black mb-12 transition-all duration-1000 ${
+          <h2 className={`text-5xl md:text-6xl font-black mb-12 transition-all duration-1500 ${
             isVisible('contact') 
-              ? 'opacity-100 transform translate-y-0' 
-              : 'opacity-0 transform translate-y-10'
-          }`}>
+              ? 'opacity-100 transform translate-y-0 scale-100 rotate-0' 
+              : 'opacity-0 transform translate-y-20 scale-95 rotate-1'
+          } hover:glitch-text`}>
             READY TO DISTORT REALITY?
           </h2>
           
-          <button className={`group bg-black text-white px-12 py-4 text-xl font-bold border-2 border-black hover:bg-white hover:text-black transition-all duration-300 ${
+          <button className={`group bg-black text-white px-12 py-4 text-xl font-bold border-2 border-black hover:bg-white hover:text-black transition-all duration-500 hover:scale-110 hover:rotate-1 ${
             isVisible('contact') 
-              ? 'opacity-100 transform translate-y-0' 
-              : 'opacity-0 transform translate-y-10'
+              ? 'opacity-100 transform translate-y-0 scale-100' 
+              : 'opacity-0 transform translate-y-20 scale-95'
           }`}>
             <span className="relative">
               CONTACT THE LAB
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-300 group-hover:w-full" />
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-current transition-all duration-500 group-hover:w-full" />
             </span>
           </button>
         </div>
@@ -418,13 +404,13 @@ const MainHomepage = () => {
       <footer className="py-12 px-6 border-t border-black">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="font-mono text-sm text-black/60">
+            <p className="font-mono text-sm text-black/60 hover:text-black transition-colors duration-300">
               © 2025 artheistlabs all rights reserved.
             </p>
             <div className="flex space-x-6">
-              <a href="https://x.com/artheistlabs" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-black/80 transition-colors">X</a>
-              <a href="https://discord.gg/7rauUTmSYq" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-black/80 transition-colors">Discord</a>
-              <a href="https://www.instagram.com/artheistlabs" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-black/80 transition-colors">Instagram</a>
+              <a href="https://x.com/artheistlabs" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-black/80 transition-all duration-300 hover:scale-110">X</a>
+              <a href="https://discord.gg/7rauUTmSYq" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-black/80 transition-all duration-300 hover:scale-110">Discord</a>
+              <a href="https://www.instagram.com/artheistlabs" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-black/80 transition-all duration-300 hover:scale-110">Instagram</a>
             </div>
           </div>
         </div>
