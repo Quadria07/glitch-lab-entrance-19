@@ -1,73 +1,242 @@
-# Welcome to your Lovable project
+
+# Artheist Labs Website
 
 ## Project info
 
 **URL**: https://lovable.dev/projects/27e3996c-f06b-488b-87e8-662396c5e855
 
-## How can I edit this code?
+## How to Customize Content
 
-There are several ways of editing your application.
+This README provides detailed instructions on how to modify all text, links, images, and content throughout the website.
 
-**Use Lovable**
+### 📝 Text Content Customization
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/27e3996c-f06b-488b-87e8-662396c5e855) and start prompting.
+All main text content is located in `src/components/MainHomepage.tsx`. Here's where to find and edit each section:
 
-Changes made via Lovable will be committed automatically to this repo.
+#### Hero Section (Lines ~50-80)
+```typescript
+// Company name
+<span className="inline-block glitch-text">ARTHEIST LABS</span>
 
-**Use your preferred IDE**
+// Main tagline
+We Make Arry's NFT
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+// Intro paragraph
+Creative powerhouse behind Arry's NFT, pioneering innovation at the intersection of art, technology, and blockchain...
 ```
 
-**Edit a file directly in GitHub**
+#### Vision Section (Lines ~130-150)
+```typescript
+// Section title
+OUR VISION
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+// Vision content
+At Artheist Labs, we envision Arry's NFT as a brand that seamlessly blends digital art...
+```
 
-**Use GitHub Codespaces**
+#### Commitment Section (Lines ~170-200)
+```typescript
+// Section title
+OUR COMMITMENT
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+// Commitment content
+We believe NFTs are more than digital assets; they are a gateway to creativity...
+```
 
-## What technologies are used for this project?
+#### Mission Section (Lines ~220-240)
+```typescript
+// Section title
+OUR MISSION
 
-This project is built with:
+// Mission content
+Our mission is to revolutionize the NFT space while driving real-world impact...
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+#### NFT Education Section (Lines ~260-290)
+```typescript
+// Section title
+WHAT ARE NFTs?
 
-## How can I deploy this project?
+// Three educational cards
+{ title: "DIGITAL OWNERSHIP", desc: "Non-Fungible Tokens represent..." }
+{ title: "CREATIVE REVOLUTION", desc: "NFTs have revolutionized..." }
+{ title: "FUTURE OF ART", desc: "The NFT market has grown..." }
+```
 
-Simply open [Lovable](https://lovable.dev/projects/27e3996c-f06b-488b-87e8-662396c5e855) and click on Share -> Publish.
+#### Floating Banners
+```typescript
+// Line ~85: Side banner
+"No Wahala, just NFTs & vibes | Naija sauce"
 
-## Can I connect a custom domain to my Lovable project?
+// Line ~250: Center banner
+"The heist has begun | 2025 Flex | #Creative Heist"
 
-Yes, you can!
+// Line ~200: Info box
+"They are a gateway to creativity, innovation, and real-world utility..."
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### 🖼️ Image and Media Customization
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+#### Logo (Navigation & Hero)
+```typescript
+// Line ~45: Navigation logo
+src="https://www.artheistlabs.com/wp-content/uploads/2025/04/ARTHEIST-LOGO-ANI2.gif"
+```
+
+#### Animated GIFs
+```typescript
+// Line ~80: Hero rotating ball
+src="https://www.artheistlabs.com/wp-content/uploads/2025/04/BALL-ROTATE.gif"
+
+// Line ~150: Vision section animation
+src="https://www.artheistlabs.com/wp-content/uploads/2025/04/WEBSITE-ANIMATIONS-5-1.gif"
+
+// Line ~190: Commitment section animation
+src="https://www.artheistlabs.com/wp-content/uploads/2025/04/WEBSITE-ANIMATIONS-3-1.gif"
+
+// Line ~320: Team section "Follow Us"
+src="https://www.artheistlabs.com/wp-content/uploads/2025/04/Follow-Us-4.gif"
+```
+
+#### Video
+```typescript
+// Line ~110: Main video
+src="https://www.artheistlabs.com/wp-content/uploads/2025/02/Artheist-video.mp4"
+```
+
+#### Team Member Images (Lines ~25-40)
+```typescript
+const teamMembers = [
+  { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST13.png", name: "Creative Director", role: "Lead Visionary" },
+  { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST15.png", name: "Tech Architect", role: "Blockchain Engineer" },
+  // ... add or remove team members here
+];
+```
+
+### 🔗 Links and Social Media
+
+#### Navigation Links (Lines ~55-65)
+```typescript
+// Current navigation items
+['About', 'Team', 'NFT', 'Contact']
+
+// To add new nav items, add to this array and create corresponding sections with matching IDs
+```
+
+#### Footer Social Links (Lines ~400-410)
+```typescript
+// X (Twitter)
+href="https://x.com/artheistlabs"
+
+// Discord
+href="https://discord.gg/7rauUTmSYq"
+
+// Instagram
+href="https://www.instagram.com/artheistlabs"
+```
+
+#### Contact Button (Line ~380)
+```typescript
+// Call-to-action button text
+CONTACT THE LAB
+
+// To make it functional, add onClick handler:
+onClick={() => window.location.href = 'mailto:contact@artheistlabs.com'}
+```
+
+### 🎨 Team Section Customization
+
+#### Adding New Team Members
+1. Add new image URL to the `teamMembers` array (line ~25)
+2. Include name and role:
+```typescript
+{ img: "NEW_IMAGE_URL", name: "Team Member Name", role: "Their Role" }
+```
+
+#### Removing Team Members
+1. Simply delete the corresponding object from the `teamMembers` array
+
+#### Changing Team Member Details
+1. Edit the `name` and `role` fields in the `teamMembers` array
+
+### ⚙️ Technical Customization
+
+#### Section IDs and Navigation
+Each section has an ID that corresponds to navigation:
+- `#hero` - Hero section
+- `#vision` - Vision section  
+- `#commitment` - Commitment section
+- `#mission` - Mission section
+- `#nft` - NFT education section
+- `#team` - Team section
+- `#contact` - Contact section
+
+#### Animation Timings
+Animation delays can be adjusted by modifying the `transitionDelay` values:
+```typescript
+style={{ transitionDelay: `${index * 100}ms` }}
+```
+
+#### Colors and Styling
+The website uses a strict black and white color scheme defined in `src/index.css`. Key classes:
+- `.glitch-text` - Glitch animation for text
+- `.animate-float` - Floating animation for images
+- `.animate-glitch` - Glitch effect on hover
+
+### 🔧 Advanced Customization
+
+#### Adding New Sections
+1. Create a new section with unique ID:
+```typescript
+<section id="new-section" data-scroll-section>
+  {/* Your content */}
+</section>
+```
+
+2. Add corresponding navigation link
+3. Add section to intersection observer logic
+
+#### Modifying Animations
+Animation classes are defined in `src/index.css`. You can:
+- Adjust animation durations
+- Change animation types
+- Add new custom animations
+
+#### Responsive Behavior
+The site uses Tailwind CSS responsive classes:
+- `md:` prefix for medium screens and up
+- `lg:` prefix for large screens and up
+- Grid layouts automatically adjust for mobile
+
+## Development Commands
+
+```sh
+# Install dependencies
+npm i
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## Technology Stack
+
+- **React** - Frontend framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Vite** - Build tool
+- **Intersection Observer API** - Scroll animations
+
+## Deployment
+
+Simply open [Lovable](https://lovable.dev/projects/27e3996c-f06b-488b-87e8-662396c5e855) and click on Share → Publish.
+
+## Custom Domain
+
+To connect a custom domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+---
+
+For more detailed editing instructions or advanced customizations, refer to the [Lovable Documentation](https://docs.lovable.dev/).
