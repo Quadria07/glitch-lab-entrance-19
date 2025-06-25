@@ -107,7 +107,7 @@ const MainHomepage = () => {
               ? 'opacity-100 transform translate-y-0' 
               : 'opacity-0 transform translate-y-20'
           }`}>
-            Creative powerhouse behind Arry's NFT, pioneering innovation at the intersection of art, technology, and blockchain. As the dedicated research and development hub, we focus on pushing the boundaries of digital art, NFT utilities, and immersive Web3 experiences.
+            Creative powerhouse behind Arry's NFT, pioneering innovation at the intersection of art, technology, and blockchain. As the dedicated research and development hub, we focus on pushing the boundaries of digital art, NFT utilities, and immersive Web3 experiences. Our mission is to redefine the NFT space by blending surrealism, creativity, and cutting-edge technology, delivering high-value digital assets that inspire and empower a new generation of collectors and creators.
           </p>
 
           <div className={`transition-all duration-1500 delay-700 ${
@@ -217,7 +217,7 @@ const MainHomepage = () => {
                 : 'opacity-0 transform translate-x-20'
             }`}>
               <p className="text-lg leading-relaxed transform transition-all duration-300 hover:scale-105">
-                We believe NFTs are more than digital assets; they are a gateway to creativity, ownership, and digital transformation. At Artheist Labs, we are committed to pushing the boundaries of NFT utilities, ensuring our creations offer value beyond aesthetics. Through artistic expression and blockchain technology, we are bringing back the modern gentleman.
+                We believe NFTs are more than digital assets, they are a gateway to creativity, ownership, and digital transformation. At Artheist Labs, we are committed to pushing the boundaries of NFT utilities, ensuring our creations offer value beyond aesthetics. Through artistic expression and blockchain technology, we are bringing back the modern gentleman.
               </p>
               
               {/* Floating text overlay with enhanced animation */}
@@ -254,7 +254,7 @@ const MainHomepage = () => {
               ? 'opacity-100 transform translate-y-0 scale-100' 
               : 'opacity-0 transform translate-y-20 scale-95'
           } hover:scale-105 duration-300`}>
-            Our mission is to revolutionize the NFT space while driving real-world impact. Arry's NFT Collection serves as a funding backbone for TFCo, a movement dedicated to reviving the modern gentleman. By merging art, utility, and purpose, we empower a community of visionaries who embrace creativity, individuality, and the values that define true excellence.
+            At Artheist Labs, our mission is to revolutionize the NFT space while driving real-world impact. Arry's NFT Collection serves as a funding backbone for TFCo, a movement dedicated to reviving the modern gentleman. By merging art, utility, and purpose, we empower a community of visionaries who embrace creativity, individuality, and the values that define true excellence.
           </p>
 
           {/* Enhanced Floating Banner */}

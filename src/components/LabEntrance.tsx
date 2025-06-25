@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -147,8 +148,8 @@ const LabEntrance = ({ onEnterLab }: LabEntranceProps) => {
 
       {/* Main content */}
       <div className="text-center z-10 relative">
-        {/* Company Logo */}
-        <div className="mb-12 animate-float">
+        {/* Company Logo - REMOVED animate-float class */}
+        <div className="mb-12">
           <img
             src="https://www.artheistlabs.com/wp-content/uploads/2025/04/ARTHEIST-LOGO-ANI2.gif"
             alt="Artheist Labs Logo"
