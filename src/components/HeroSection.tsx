@@ -31,18 +31,6 @@ const HeroSection = () => {
     })
   };
 
-  const floatingVariants = {
-    float: {
-      y: [-10, 10, -10],
-      rotateZ: [-5, 5, -5],
-      transition: {
-        duration: 3,
-        repeat: Infinity,
-        ease: [0.445, 0.05, 0.55, 0.95] as const
-      }
-    }
-  };
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
@@ -68,7 +56,7 @@ const HeroSection = () => {
       {[...Array(10)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-4 h-4 border border-black/20"
+          className="absolute w-2 h-2 md:w-4 md:h-4 border border-black/20"
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -87,10 +75,10 @@ const HeroSection = () => {
       ))}
 
       {/* Main Content */}
-      <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
+      <div className="relative z-10 text-center max-w-6xl mx-auto px-4 sm:px-6">
         {/* Main Title */}
-        <div className="mb-8">
-          <div className="font-orbitron font-black text-5xl md:text-7xl lg:text-8xl tracking-wider">
+        <div className="mb-6 sm:mb-8">
+          <div className="font-orbitron font-black text-3xl sm:text-5xl md:text-7xl lg:text-8xl tracking-wider">
             {"ARTHEIST LABS".split("").map((letter, i) => (
               <motion.span
                 key={i}
@@ -119,9 +107,9 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
-          className="mb-12"
+          className="mb-8 sm:mb-12"
         >
-          <h2 className="font-space font-bold text-2xl md:text-4xl lg:text-5xl">
+          <h2 className="font-space font-bold text-xl sm:text-2xl md:text-4xl lg:text-5xl">
             {"We Make Arry's NFT".split(" ").map((word, i) => (
               <motion.span
                 key={i}
@@ -134,7 +122,7 @@ const HeroSection = () => {
                   repeat: Infinity,
                   ease: [0.445, 0.05, 0.55, 0.95] as const
                 }}
-                className="inline-block mr-4"
+                className="inline-block mr-2 sm:mr-4"
               >
                 {word}
               </motion.span>
@@ -142,25 +130,12 @@ const HeroSection = () => {
           </h2>
         </motion.div>
 
-        {/* Rotating Ball */}
-        <motion.div
-          variants={floatingVariants}
-          animate="float"
-          className="mb-8"
-        >
-          <img
-            src="https://www.artheistlabs.com/wp-content/uploads/2025/04/BALL-ROTATE.gif"
-            alt="Rotating Ball"
-            className="mx-auto max-w-xs md:max-w-md hover:scale-110 transition-transform duration-500"
-          />
-        </motion.div>
-
         {/* Quote */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 2 }}
-          className="font-mono text-sm md:text-base mb-4 text-black/70"
+          className="font-mono text-xs sm:text-sm md:text-base mb-4 text-black/70 px-4"
         >
           "No Wahala, just NFTs & vibes | Naija sauce"
         </motion.p>
@@ -170,7 +145,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 2.5 }}
-          className="inline-block p-4 border-2 border-black bg-black text-white font-mono text-sm hover:bg-white hover:text-black transition-all duration-500 hover:scale-110"
+          className="inline-block p-3 sm:p-4 border-2 border-black bg-black text-white font-mono text-xs sm:text-sm hover:bg-white hover:text-black transition-all duration-500 hover:scale-110 mx-4"
         >
           The heist has begun | 2025 Flex | #Creative Heist
         </motion.div>
@@ -181,20 +156,20 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 3 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-black rounded-full flex justify-center"
+          className="w-4 h-6 sm:w-6 sm:h-10 border-2 border-black rounded-full flex justify-center"
         >
-          <div className="w-1 h-3 bg-black rounded-full mt-2" />
+          <div className="w-1 h-2 sm:h-3 bg-black rounded-full mt-1 sm:mt-2" />
         </motion.div>
       </motion.div>
 
       {/* Interactive Glow */}
       <div
-        className="absolute pointer-events-none w-96 h-96 rounded-full"
+        className="absolute pointer-events-none w-48 h-48 sm:w-96 sm:h-96 rounded-full"
         style={{
           background: `radial-gradient(circle, rgba(0,0,0,0.1) 0%, transparent 70%)`,
           left: `${(mousePosition.x + 1) * 50}%`,

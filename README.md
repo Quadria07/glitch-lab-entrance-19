@@ -5,125 +5,61 @@
 
 **URL**: https://lovable.dev/projects/27e3996c-f06b-488b-87e8-662396c5e855
 
-## How to Customize Content
+## 🎯 Complete Guide to Customizing Your Website
 
-This README provides detailed instructions on how to modify all text, links, images, and content throughout the website.
+This comprehensive guide will help you customize every aspect of your Artheist Labs website, from text content to production deployment.
 
-### 📝 Text Content Customization
+### 📝 How to Edit All Text Content
 
-All main text content is located in `src/components/MainHomepage.tsx`. Here's where to find and edit each section:
+#### Hero Section Text
+**File**: `src/components/HeroSection.tsx`
+- **Company Name** (Line ~80): Change `"ARTHEIST LABS"` 
+- **Main Tagline** (Line ~110): Change `"We Make Arry's NFT"`
+- **Quote** (Line ~130): Change `"No Wahala, just NFTs & vibes | Naija sauce"`
+- **Banner Text** (Line ~140): Change `"The heist has begun | 2025 Flex | #Creative Heist"`
 
-#### Hero Section (Lines ~50-80)
-```typescript
-// Company name
-<span className="inline-block glitch-text">ARTHEIST LABS</span>
+#### About Section Text
+**File**: `src/components/AboutSection.tsx`
+- Section titles and descriptions
+- Vision, Mission, and Commitment content blocks
+- All paragraph text and headings
 
-// Main tagline
-We Make Arry's NFT
-
-// Intro paragraph
-Creative powerhouse behind Arry's NFT, pioneering innovation at the intersection of art, technology, and blockchain...
-```
-
-#### Vision Section (Lines ~130-150)
-```typescript
-// Section title
-OUR VISION
-
-// Vision content
-At Artheist Labs, we envision Arry's NFT as a brand that seamlessly blends digital art...
-```
-
-#### Commitment Section (Lines ~170-200)
-```typescript
-// Section title
-OUR COMMITMENT
-
-// Commitment content
-We believe NFTs are more than digital assets; they are a gateway to creativity...
-```
-
-#### Mission Section (Lines ~220-240)
-```typescript
-// Section title
-OUR MISSION
-
-// Mission content
-Our mission is to revolutionize the NFT space while driving real-world impact...
-```
-
-#### NFT Education Section (Lines ~260-290)
-```typescript
-// Section title
-WHAT ARE NFTs?
-
-// Three educational cards
-{ title: "DIGITAL OWNERSHIP", desc: "Non-Fungible Tokens represent..." }
-{ title: "CREATIVE REVOLUTION", desc: "NFTs have revolutionized..." }
-{ title: "FUTURE OF ART", desc: "The NFT market has grown..." }
-```
-
-#### Floating Banners
-```typescript
-// Line ~85: Side banner
-"No Wahala, just NFTs & vibes | Naija sauce"
-
-// Line ~250: Center banner
-"The heist has begun | 2025 Flex | #Creative Heist"
-
-// Line ~200: Info box
-"They are a gateway to creativity, innovation, and real-world utility..."
-```
-
-### 🖼️ Image and Media Customization
-
-#### Logo (Navigation & Hero)
-```typescript
-// Line ~45: Navigation logo
-src="https://www.artheistlabs.com/wp-content/uploads/2025/04/ARTHEIST-LOGO-ANI2.gif"
-```
-
-#### Animated GIFs
-```typescript
-// Line ~80: Hero rotating ball
-src="https://www.artheistlabs.com/wp-content/uploads/2025/04/BALL-ROTATE.gif"
-
-// Line ~150: Vision section animation
-src="https://www.artheistlabs.com/wp-content/uploads/2025/04/WEBSITE-ANIMATIONS-5-1.gif"
-
-// Line ~190: Commitment section animation
-src="https://www.artheistlabs.com/wp-content/uploads/2025/04/WEBSITE-ANIMATIONS-3-1.gif"
-
-// Line ~320: Team section "Follow Us"
-src="https://www.artheistlabs.com/wp-content/uploads/2025/04/Follow-Us-4.gif"
-```
-
-#### Video
-```typescript
-// Line ~110: Main video
-src="https://www.artheistlabs.com/wp-content/uploads/2025/02/Artheist-video.mp4"
-```
-
-#### Team Member Images (Lines ~25-40)
+#### Team Section
+**File**: `src/components/TeamSection.tsx` (Lines ~8-20)
 ```typescript
 const teamMembers = [
-  { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST13.png", name: "Creative Director", role: "Lead Visionary" },
-  { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST15.png", name: "Tech Architect", role: "Blockchain Engineer" },
-  // ... add or remove team members here
+  { 
+    img: "IMAGE_URL", 
+    name: "MEMBER_NAME", 
+    role: "MEMBER_ROLE" 
+  },
+  // Add or remove team members here
 ];
 ```
+- **Section Title** (Line ~70): Change `"OUR TEAM"`
+- **Subtitle** (Line ~80): Change `"MEET OUR TEAM OF ALCHEMISTS"`
 
-### 🔗 Links and Social Media
+#### NFT Section Text
+**File**: `src/components/NFTSection.tsx`
+- Educational content cards
+- Timeline information (2017-2019, 2020-2021, 2022-2024)
+- Market statistics and quotes
 
-#### Navigation Links (Lines ~55-65)
-```typescript
-// Current navigation items
-['About', 'Team', 'NFT', 'Contact']
+#### Navigation Menu
+**File**: `src/components/Navigation.tsx`
+- Menu items and links
+- Logo and branding elements
 
-// To add new nav items, add to this array and create corresponding sections with matching IDs
-```
+#### Footer Content
+**File**: `src/components/Footer.tsx`
+- Copyright text
+- Social media links
+- Contact information
 
-#### Footer Social Links (Lines ~400-410)
+### 🔗 How to Edit All Links
+
+#### Social Media Links
+**File**: `src/components/Footer.tsx`
 ```typescript
 // X (Twitter)
 href="https://x.com/artheistlabs"
@@ -135,108 +71,232 @@ href="https://discord.gg/7rauUTmSYq"
 href="https://www.instagram.com/artheistlabs"
 ```
 
-#### Contact Button (Line ~380)
-```typescript
-// Call-to-action button text
-CONTACT THE LAB
+#### Internal Navigation
+**File**: `src/components/Navigation.tsx`
+- Update navigation menu items
+- Modify section anchor links (#about, #team, #nft, etc.)
 
-// To make it functional, add onClick handler:
-onClick={() => window.location.href = 'mailto:contact@artheistlabs.com'}
+#### External Resources
+Throughout the components, update any external links:
+- Documentation links
+- Partner websites
+- Resource pages
+
+### 🖼️ How to Change Images and Media
+
+#### Logo Updates
+```typescript
+// Main logo in Navigation.tsx
+src="https://www.artheistlabs.com/wp-content/uploads/2025/04/ARTHEIST-LOGO-ANI2.gif"
 ```
 
-### 🎨 Team Section Customization
-
-#### Adding New Team Members
-1. Add new image URL to the `teamMembers` array (line ~25)
-2. Include name and role:
+#### Video Background
 ```typescript
-{ img: "NEW_IMAGE_URL", name: "Team Member Name", role: "Their Role" }
+// Hero section video in HeroSection.tsx
+src="https://www.artheistlabs.com/wp-content/uploads/2025/02/Artheist-video.mp4"
 ```
 
-#### Removing Team Members
-1. Simply delete the corresponding object from the `teamMembers` array
+#### Team Member Photos
+Update the `teamMembers` array in `src/components/TeamSection.tsx` with new image URLs.
 
-#### Changing Team Member Details
-1. Edit the `name` and `role` fields in the `teamMembers` array
+#### Animation GIFs
+Replace any animated elements by updating their `src` attributes in the respective component files.
 
-### ⚙️ Technical Customization
+### 🎨 How to Customize Styling
 
-#### Section IDs and Navigation
-Each section has an ID that corresponds to navigation:
-- `#hero` - Hero section
-- `#vision` - Vision section  
-- `#commitment` - Commitment section
-- `#mission` - Mission section
-- `#nft` - NFT education section
-- `#team` - Team section
-- `#contact` - Contact section
+#### Colors and Themes
+**File**: `src/index.css`
+- CSS custom properties (--background, --foreground, etc.)
+- Color scheme definitions
+- Design system variables
 
-#### Animation Timings
-Animation delays can be adjusted by modifying the `transitionDelay` values:
-```typescript
-style={{ transitionDelay: `${index * 100}ms` }}
+#### Fonts
+**File**: `src/index.css` (Lines ~1-5)
+```css
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 ```
 
-#### Colors and Styling
-The website uses a strict black and white color scheme defined in `src/index.css`. Key classes:
-- `.glitch-text` - Glitch animation for text
-- `.animate-float` - Floating animation for images
-- `.animate-glitch` - Glitch effect on hover
+#### Animations
+**File**: `src/index.css` (Lines ~50+)
+- Custom keyframe animations
+- Transition effects
+- Hover states
 
-### 🔧 Advanced Customization
+### ⚙️ Development Commands
 
-#### Adding New Sections
-1. Create a new section with unique ID:
-```typescript
-<section id="new-section" data-scroll-section>
-  {/* Your content */}
-</section>
-```
-
-2. Add corresponding navigation link
-3. Add section to intersection observer logic
-
-#### Modifying Animations
-Animation classes are defined in `src/index.css`. You can:
-- Adjust animation durations
-- Change animation types
-- Add new custom animations
-
-#### Responsive Behavior
-The site uses Tailwind CSS responsive classes:
-- `md:` prefix for medium screens and up
-- `lg:` prefix for large screens and up
-- Grid layouts automatically adjust for mobile
-
-## Development Commands
-
-```sh
+```bash
 # Install dependencies
-npm i
+npm install
 
 # Start development server
 npm run dev
 
 # Build for production
 npm run build
+
+# Preview production build
+npm run preview
 ```
+
+### 🚀 Preparing for Production
+
+#### 1. Environment Setup
+Create a `.env` file for environment variables:
+```env
+VITE_API_URL=your_api_url
+VITE_ANALYTICS_ID=your_analytics_id
+```
+
+#### 2. Build Optimization
+```bash
+# Create optimized production build
+npm run build
+```
+
+#### 3. Performance Checks
+- Test all animations and interactions
+- Verify responsive design on all devices
+- Check loading times for images and videos
+- Test all external links
+
+#### 4. SEO Optimization
+**File**: `index.html`
+- Update meta tags
+- Add proper title and description
+- Include Open Graph tags
+- Add favicon and manifest files
+
+### 🌐 Hosting on cPanel File Manager
+
+#### Step 1: Build Your Project
+```bash
+npm run build
+```
+This creates a `dist` folder with all production files.
+
+#### Step 2: Prepare Files for Upload
+1. Locate the `dist` folder in your project
+2. Compress it into a ZIP file for easier upload
+3. Alternatively, upload individual files
+
+#### Step 3: Upload to cPanel
+1. **Login to cPanel** → File Manager
+2. **Navigate** to `public_html` (or your domain's root folder)
+3. **Delete** any existing website files (index.html, etc.)
+4. **Upload** your ZIP file or drag & drop the `dist` folder contents
+5. **Extract** the ZIP file if you uploaded one
+6. **Move** all files from the `dist` folder to the root directory
+
+#### Step 4: File Structure After Upload
+```
+public_html/
+├── index.html
+├── assets/
+│   ├── index-[hash].js
+│   ├── index-[hash].css
+│   └── [other assets]
+├── favicon.ico
+└── [other static files]
+```
+
+#### Step 5: Configure Domain Settings
+1. **Check** that your domain points to the correct directory
+2. **Set** index.html as the default document
+3. **Test** the website by visiting your domain
+
+#### Step 6: SSL Certificate (Recommended)
+1. **Enable** SSL in cPanel
+2. **Force HTTPS** redirects
+3. **Update** any hardcoded HTTP links
+
+### 🔧 Troubleshooting Common Issues
+
+#### Build Errors
+- Check for TypeScript errors: `npm run type-check`
+- Verify all imports are correct
+- Ensure all dependencies are installed
+
+#### Upload Issues
+- Check file permissions (755 for folders, 644 for files)
+- Ensure .htaccess file is properly configured
+- Verify all paths are relative, not absolute
+
+#### Performance Issues
+- Optimize images before uploading
+- Use appropriate video formats and compression
+- Consider using a CDN for large assets
+
+### 📱 Mobile Responsiveness
+
+The website is built with responsive design using Tailwind CSS:
+- **Mobile-first** approach
+- **Breakpoints**: sm (640px), md (768px), lg (1024px), xl (1280px)
+- **Testing**: Use browser dev tools to test different screen sizes
+
+### 🎭 Animation Customization
+
+**File**: `src/index.css`
+- Modify existing animations
+- Add new keyframe animations
+- Adjust timing and easing functions
+
+### 📊 Analytics Integration
+
+To add Google Analytics or other tracking:
+1. **Add** tracking script to `index.html`
+2. **Configure** environment variables
+3. **Test** in production environment
+
+### 🔄 Continuous Updates
+
+#### Making Changes
+1. **Edit** files locally
+2. **Test** with `npm run dev`
+3. **Build** with `npm run build`
+4. **Upload** new `dist` folder contents to cPanel
+
+#### Version Control
+Consider using Git for version control:
+1. **Initialize**: `git init`
+2. **Commit** changes regularly
+3. **Push** to GitHub/GitLab for backup
+
+### 🆘 Support Resources
+
+- **Lovable Documentation**: https://docs.lovable.dev/
+- **React Documentation**: https://reactjs.org/docs/
+- **Tailwind CSS**: https://tailwindcss.com/docs
+- **Framer Motion**: https://www.framer.com/motion/
+
+### 📋 Pre-Launch Checklist
+
+- [ ] All text content updated
+- [ ] All images and media optimized
+- [ ] All links tested and working
+- [ ] Responsive design verified
+- [ ] Performance optimized
+- [ ] SEO meta tags added
+- [ ] SSL certificate installed
+- [ ] Analytics configured
+- [ ] Contact forms functional
+- [ ] Social media links verified
 
 ## Technology Stack
 
 - **React** - Frontend framework
 - **TypeScript** - Type safety
-- **Tailwind CSS** - Styling
-- **Vite** - Build tool
-- **Intersection Observer API** - Scroll animations
+- **Tailwind CSS** - Styling framework
+- **Framer Motion** - Animation library
+- **Vite** - Build tool and development server
 
 ## Deployment
 
-Simply open [Lovable](https://lovable.dev/projects/27e3996c-f06b-488b-87e8-662396c5e855) and click on Share → Publish.
+Simply open [Lovable](https://lovable.dev/projects/27e3996c-f06b-488b-87e8-662396c5e855) and click on Share → Publish for quick deployment, or follow the cPanel instructions above for custom hosting.
 
 ## Custom Domain
 
-To connect a custom domain, navigate to Project > Settings > Domains and click Connect Domain.
+To connect a custom domain, navigate to Project > Settings > Domains and click Connect Domain in Lovable, or configure DNS settings in your hosting provider for cPanel hosting.
 
 ---
 
-For more detailed editing instructions or advanced customizations, refer to the [Lovable Documentation](https://docs.lovable.dev/).
+For additional help or advanced customizations, refer to the [Lovable Documentation](https://docs.lovable.dev/) or contact support.

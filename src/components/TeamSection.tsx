@@ -56,37 +56,32 @@ const TeamSection = () => {
   const isVisible = (sectionId: string) => visibleSections.has(sectionId);
 
   return (
-    <section id="ourteam" className="py-20 px-6 bg-white">
+    <section id="ourteam" className="py-12 sm:py-20 px-4 sm:px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible('ourteam') ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 1 }}
-          className="font-orbitron font-black text-4xl md:text-5xl text-center mb-16"
+          className="font-orbitron font-black text-3xl sm:text-4xl md:text-5xl text-center mb-8 sm:mb-12"
         >
-          MEET OUR TEAM OF ALCHEMISTS
+          OUR TEAM
         </motion.h2>
 
-        {/* Follow Us GIF */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={isVisible('ourteam') ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="text-center mb-16"
+        <motion.h3
+          initial={{ opacity: 0, y: 50 }}
+          animate={isVisible('ourteam') ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="font-orbitron font-black text-2xl sm:text-3xl md:text-4xl text-center mb-12 sm:mb-16"
         >
-          <img
-            src="https://www.artheistlabs.com/wp-content/uploads/2025/04/Follow-Us-4.gif"
-            alt="Follow Us"
-            className="mx-auto max-w-md hover:scale-110 transition-transform duration-500"
-          />
-        </motion.div>
+          MEET OUR TEAM OF ALCHEMISTS
+        </motion.h3>
 
         {/* Team Grid */}
         <div 
           id="team-grid"
           data-scroll-section
-          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8"
         >
           {teamMembers.map((member, index) => (
             <motion.div
@@ -117,7 +112,7 @@ const TeamSection = () => {
                   className="absolute inset-0 bg-black/90 flex items-center justify-center"
                 >
                   <div className="text-white text-center p-2">
-                    <h3 className="font-orbitron font-bold text-sm mb-1">{member.name}</h3>
+                    <h3 className="font-orbitron font-bold text-xs sm:text-sm mb-1">{member.name}</h3>
                     <p className="font-space text-xs">{member.role}</p>
                   </div>
                 </motion.div>
