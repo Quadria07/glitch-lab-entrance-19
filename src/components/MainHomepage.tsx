@@ -1,4 +1,5 @@
 
+import { motion } from 'framer-motion';
 import ParticleBackground from './ParticleBackground';
 import Navigation from './Navigation';
 import HeroSection from './HeroSection';
