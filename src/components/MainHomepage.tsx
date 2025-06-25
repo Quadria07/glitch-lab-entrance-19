@@ -7,6 +7,7 @@ import AboutSection from './AboutSection';
 import TeamSection from './TeamSection';
 import NFTSection from './NFTSection';
 import Footer from './Footer';
+import AnimatedSection from './AnimatedSection';
 
 const MainHomepage = () => {
   return (
@@ -21,16 +22,22 @@ const MainHomepage = () => {
       <HeroSection />
       
       {/* About Section */}
-      <AboutSection />
+      <AnimatedSection id="aboutus">
+        <AboutSection />
+      </AnimatedSection>
       
       {/* Team Section */}
       <TeamSection />
       
       {/* NFT Section */}
-      <NFTSection />
+      <AnimatedSection>
+        <NFTSection />
+      </AnimatedSection>
       
       {/* Footer */}
-      <Footer />
+      <AnimatedSection>
+        <Footer />
+      </AnimatedSection>
     </div>
   );
 };
