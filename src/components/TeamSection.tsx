@@ -1,16 +1,9 @@
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 const TeamSection = () => {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
 
   const teamMembers = [
     { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST13.png", name: "Creative Director", role: "Lead Visionary" },
@@ -46,16 +39,25 @@ const TeamSection = () => {
     return () => observer.disconnect();
   }, []);
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 100, rotateX: -30 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.8,
+        ease: [0.23, 1, 0.320, 1] as const
+      }
+    })
+  };
+
   const isVisible = (sectionId: string) => visibleSections.has(sectionId);
 
   return (
-    <section 
-      ref={containerRef}
-      id="ourteam" 
-      className="py-8 sm:py-12 md:py-20 px-4 sm:px-6 bg-white overflow-hidden"
-      style={{ height: "400vh" }}
-    >
-      <div className="sticky top-0 h-screen flex flex-col justify-center">
+    <section id="ourteam" className="py-8 sm:py-12 md:py-20 px-4 sm:px-6 bg-white">
+      <div className="max-w-7xl mx-auto">
         
         {/* Our Team Main Heading */}
         <motion.div
@@ -64,9 +66,9 @@ const TeamSection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible('ourteam-header') ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 1 }}
-          className="text-center mb-4 sm:mb-6 md:mb-8"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h2 className="font-orbitron font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-black mb-2 sm:mb-4">
+          <h2 className="font-orbitron font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-black mb-4 sm:mb-6">
             OUR TEAM
           </h2>
         </motion.div>
@@ -75,69 +77,54 @@ const TeamSection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible('ourteam') ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="font-orbitron font-black text-lg sm:text-xl md:text-2xl lg:text-3xl text-center mb-6 sm:mb-8 md:mb-12"
+          className="font-orbitron font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center mb-8 sm:mb-12 md:mb-16"
         >
           MEET OUR TEAM OF ALCHEMISTS
         </motion.h3>
 
-        {/* Horizontal Scrolling Team Grid */}
-        <div className="relative overflow-hidden">
-          <motion.div
-            style={{ x }}
-            className="flex gap-4 sm:gap-6 md:gap-8"
-            id="team-grid"
-            data-scroll-section
-          >
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isVisible('team-grid') ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ 
-                  scale: 1.05, 
-                  rotateY: 10,
-                  transition: { duration: 0.3 }
-                }}
-                className="group cursor-pointer flex-shrink-0"
-                style={{ width: "250px", height: "250px" }}
-              >
-                <div className="relative overflow-hidden border-2 border-black hover:shadow-xl transition-shadow duration-500 w-full h-full">
-                  <motion.img
-                    src={member.img}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.2, rotate: 3 }}
-                    transition={{ duration: 0.7 }}
-                  />
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute inset-0 bg-black/90 flex items-center justify-center p-4"
-                  >
-                    <div className="text-white text-center">
-                      <h3 className="font-orbitron font-bold text-sm lg:text-base mb-2">{member.name}</h3>
-                      <p className="font-space text-xs sm:text-sm">{member.role}</p>
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="text-center mt-8"
+        {/* Team Grid */}
+        <div 
+          id="team-grid"
+          data-scroll-section
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 lg:gap-8"
         >
-          <p className="font-mono text-xs sm:text-sm text-black/60">
-            Scroll to see our team
-          </p>
-        </motion.div>
+          {teamMembers.map((member, index) => (
+            <motion.div
+              key={index}
+              custom={index}
+              variants={cardVariants}
+              initial="hidden"
+              animate={isVisible('team-grid') ? 'visible' : 'hidden'}
+              whileHover={{ 
+                scale: 1.05, 
+                rotateY: 10,
+                transition: { duration: 0.3 }
+              }}
+              className="group cursor-pointer"
+            >
+              <div className="relative overflow-hidden border-2 border-black hover:shadow-xl transition-shadow duration-500 aspect-square">
+                <motion.img
+                  src={member.img}
+                  alt={member.name}
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.2, rotate: 3 }}
+                  transition={{ duration: 0.7 }}
+                />
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 bg-black/90 flex items-center justify-center p-2"
+                >
+                  <div className="text-white text-center">
+                    <h3 className="font-orbitron font-bold text-xs sm:text-sm lg:text-base mb-1">{member.name}</h3>
+                    <p className="font-space text-xs sm:text-sm">{member.role}</p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
       </div>
     </section>

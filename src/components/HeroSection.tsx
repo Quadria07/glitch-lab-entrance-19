@@ -1,17 +1,9 @@
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -34,17 +26,13 @@ const HeroSection = () => {
       transition: {
         delay: i * 0.1,
         duration: 0.8,
-        ease: [0.23, 1, 0.320, 1]
+        ease: [0.23, 1, 0.320, 1] as const
       }
     })
   };
 
   return (
-    <motion.section 
-      ref={containerRef}
-      style={{ y, opacity }}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
@@ -132,7 +120,7 @@ const HeroSection = () => {
                   duration: 2,
                   delay: i * 0.3,
                   repeat: Infinity,
-                  ease: [0.445, 0.05, 0.55, 0.95]
+                  ease: [0.445, 0.05, 0.55, 0.95] as const
                 }}
                 className="inline-block mr-2 sm:mr-4"
               >
@@ -190,7 +178,7 @@ const HeroSection = () => {
           transition: 'all 0.3s ease-out'
         }}
       />
-    </motion.section>
+    </section>
   );
 };
 
