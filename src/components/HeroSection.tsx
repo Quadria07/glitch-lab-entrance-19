@@ -77,8 +77,8 @@ const HeroSection = () => {
       {/* Main Content */}
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4 sm:px-6">
         {/* Main Title */}
-        <div className="mb-6 sm:mb-8">
-          <div className="font-orbitron font-black text-3xl sm:text-5xl md:text-7xl lg:text-8xl tracking-wider">
+        <div className="mb-4 sm:mb-6 md:mb-8">
+          <div className="font-orbitron font-black text-2xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl tracking-wider leading-tight">
             {"ARTHEIST LABS".split("").map((letter, i) => (
               <motion.span
                 key={i}
@@ -107,9 +107,9 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
-          className="mb-8 sm:mb-12"
+          className="mb-6 sm:mb-8 md:mb-12"
         >
-          <h2 className="font-space font-bold text-xl sm:text-2xl md:text-4xl lg:text-5xl">
+          <h2 className="font-space font-bold text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl">
             {"We Make Arry's NFT".split(" ").map((word, i) => (
               <motion.span
                 key={i}
@@ -135,7 +135,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 2 }}
-          className="font-mono text-xs sm:text-sm md:text-base mb-4 text-black/70 px-4"
+          className="font-mono text-xs sm:text-sm md:text-base mb-4 sm:mb-6 text-black/70 px-4"
         >
           "No Wahala, just NFTs & vibes | Naija sauce"
         </motion.p>
@@ -145,7 +145,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 2.5 }}
-          className="inline-block p-3 sm:p-4 border-2 border-black bg-black text-white font-mono text-xs sm:text-sm hover:bg-white hover:text-black transition-all duration-500 hover:scale-110 mx-4"
+          className="inline-block p-3 sm:p-4 md:p-5 border-2 border-black bg-black text-white font-mono text-xs sm:text-sm md:text-base hover:bg-white hover:text-black transition-all duration-500 hover:scale-110 mx-4 text-center"
         >
           The heist has begun | 2025 Flex | #Creative Heist
         </motion.div>
@@ -169,7 +169,7 @@ const HeroSection = () => {
 
       {/* Interactive Glow */}
       <div
-        className="absolute pointer-events-none w-48 h-48 sm:w-96 sm:h-96 rounded-full"
+        className="absolute pointer-events-none w-32 h-32 sm:w-48 sm:h-48 md:w-96 md:h-96 rounded-full"
         style={{
           background: `radial-gradient(circle, rgba(0,0,0,0.1) 0%, transparent 70%)`,
           left: `${(mousePosition.x + 1) * 50}%`,

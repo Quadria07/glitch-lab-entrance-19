@@ -56,23 +56,28 @@ const TeamSection = () => {
   const isVisible = (sectionId: string) => visibleSections.has(sectionId);
 
   return (
-    <section id="ourteam" className="py-12 sm:py-20 px-4 sm:px-6 bg-white">
+    <section id="ourteam" className="py-8 sm:py-12 md:py-20 px-4 sm:px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         
-        <motion.h2
+        {/* Our Team Main Heading */}
+        <motion.div
+          id="ourteam-header"
+          data-scroll-section
           initial={{ opacity: 0, y: 50 }}
-          animate={isVisible('ourteam') ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          animate={isVisible('ourteam-header') ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 1 }}
-          className="font-orbitron font-black text-3xl sm:text-4xl md:text-5xl text-center mb-8 sm:mb-12"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          OUR TEAM
-        </motion.h2>
+          <h2 className="font-orbitron font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-black mb-4 sm:mb-6">
+            OUR TEAM
+          </h2>
+        </motion.div>
 
         <motion.h3
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible('ourteam') ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="font-orbitron font-black text-2xl sm:text-3xl md:text-4xl text-center mb-12 sm:mb-16"
+          className="font-orbitron font-black text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center mb-8 sm:mb-12 md:mb-16"
         >
           MEET OUR TEAM OF ALCHEMISTS
         </motion.h3>
@@ -81,7 +86,7 @@ const TeamSection = () => {
         <div 
           id="team-grid"
           data-scroll-section
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6 lg:gap-8"
         >
           {teamMembers.map((member, index) => (
             <motion.div
@@ -97,11 +102,11 @@ const TeamSection = () => {
               }}
               className="group cursor-pointer"
             >
-              <div className="relative overflow-hidden border-2 border-black hover:shadow-2xl transition-shadow duration-500">
+              <div className="relative overflow-hidden border-2 border-black hover:shadow-xl transition-shadow duration-500 aspect-square">
                 <motion.img
                   src={member.img}
                   alt={member.name}
-                  className="w-full aspect-square object-cover"
+                  className="w-full h-full object-cover"
                   whileHover={{ scale: 1.2, rotate: 3 }}
                   transition={{ duration: 0.7 }}
                 />
@@ -109,11 +114,11 @@ const TeamSection = () => {
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-black/90 flex items-center justify-center"
+                  className="absolute inset-0 bg-black/90 flex items-center justify-center p-2"
                 >
-                  <div className="text-white text-center p-2">
-                    <h3 className="font-orbitron font-bold text-xs sm:text-sm mb-1">{member.name}</h3>
-                    <p className="font-space text-xs">{member.role}</p>
+                  <div className="text-white text-center">
+                    <h3 className="font-orbitron font-bold text-xs sm:text-sm lg:text-base mb-1">{member.name}</h3>
+                    <p className="font-space text-xs sm:text-sm">{member.role}</p>
                   </div>
                 </motion.div>
               </div>
