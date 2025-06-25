@@ -190,7 +190,7 @@ const HeroSection = () => {
         >
           <div className="w-1 h-3 bg-black rounded-full mt-2" />
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Interactive Glow */}
       <div
