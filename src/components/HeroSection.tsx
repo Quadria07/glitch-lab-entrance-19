@@ -26,7 +26,7 @@ const HeroSection = () => {
       transition: {
         delay: i * 0.1,
         duration: 0.8,
-        ease: "easeOut"
+        ease: [0.23, 1, 0.320, 1] as const
       }
     })
   };
@@ -38,7 +38,7 @@ const HeroSection = () => {
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: "easeInOut"
+        ease: [0.445, 0.05, 0.55, 0.95] as const
       }
     }
   };
@@ -132,7 +132,7 @@ const HeroSection = () => {
                   duration: 2,
                   delay: i * 0.3,
                   repeat: Infinity,
-                  ease: "easeInOut"
+                  ease: [0.445, 0.05, 0.55, 0.95] as const
                 }}
                 className="inline-block mr-4"
               >

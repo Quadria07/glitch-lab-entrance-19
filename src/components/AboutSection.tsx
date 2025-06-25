@@ -31,7 +31,7 @@ const AboutSection = () => {
       scale: 1, 
       rotateX: 0,
       transition: { 
-        type: "spring", 
+        type: "spring" as const, 
         damping: 20, 
         stiffness: 100, 
         duration: 1.2 
@@ -46,7 +46,7 @@ const AboutSection = () => {
       x: 0, 
       rotateY: 0,
       transition: { 
-        type: "spring", 
+        type: "spring" as const, 
         damping: 15, 
         stiffness: 80, 
         duration: 1.5 
@@ -61,7 +61,7 @@ const AboutSection = () => {
       scale: 1, 
       rotateZ: 0,
       transition: { 
-        type: "spring", 
+        type: "spring" as const, 
         damping: 12, 
         stiffness: 120, 
         duration: 1.3 

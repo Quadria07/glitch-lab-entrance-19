@@ -32,7 +32,7 @@ const NFTSection = () => {
       transition: {
         delay: i * 0.2,
         duration: 0.8,
-        ease: "easeOut"
+        ease: [0.23, 1, 0.320, 1] as const
       }
     })
   };
