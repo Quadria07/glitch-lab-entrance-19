@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -55,12 +57,12 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
   }
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
     cursor: none;
   }
 
@@ -68,6 +70,48 @@
   * {
     cursor: none !important;
   }
+}
+
+/* Font Classes */
+.font-orbitron {
+  font-family: 'Orbitron', monospace;
+}
+
+.font-space {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Enhanced floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) translateX(5px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(5px) translateX(-5px) rotate(240deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Text reveal animation */
+.reveal-text {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal-text.animate-fade-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Enhanced glitch text effect */
@@ -104,20 +148,6 @@
 
 .glitch-text {
   animation: glitch-text 1.5s linear infinite;
-}
-
-/* Enhanced floating animation */
-@keyframes animate-float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(180deg);
-  }
-}
-
-.animate-float {
-  animation: animate-float 6s ease-in-out infinite;
 }
 
 /* Advanced fade in animation */
@@ -205,58 +235,6 @@ section {
   animation: bounce-in 0.6s ease-out forwards;
 }
 
-/* Advanced glitch effect for images */
-@keyframes animate-glitch {
-  0% {
-    transform: translate(0);
-    filter: hue-rotate(0deg);
-  }
-  10% {
-    transform: translate(-2px, 2px);
-    filter: hue-rotate(90deg);
-  }
-  20% {
-    transform: translate(-1px, -1px);
-    filter: hue-rotate(180deg);
-  }
-  30% {
-    transform: translate(1px, 2px);
-    filter: hue-rotate(270deg);
-  }
-  40% {
-    transform: translate(1px, -1px);
-    filter: hue-rotate(360deg);
-  }
-  50% {
-    transform: translate(-1px, 2px);
-    filter: hue-rotate(0deg);
-  }
-  60% {
-    transform: translate(-1px, 1px);
-    filter: hue-rotate(90deg);
-  }
-  70% {
-    transform: translate(2px, 1px);
-    filter: hue-rotate(180deg);
-  }
-  80% {
-    transform: translate(-2px, -1px);
-    filter: hue-rotate(270deg);
-  }
-  90% {
-    transform: translate(1px, 2px);
-    filter: hue-rotate(360deg);
-  }
-  100% {
-    transform: translate(0);
-    filter: hue-rotate(0deg);
-  }
-}
-
-.animate-glitch {
-  animation: animate-glitch 0.3s linear infinite;
-}
-
 /* Subtle pulse effect */
 @keyframes subtle-pulse {
   0%, 100% {
@@ -271,4 +249,25 @@ section {
 
 .animate-subtle-pulse {
   animation: subtle-pulse 3s ease-in-out infinite;
+}
+
+/* 3D Perspective for enhanced animations */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Gradient animations */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
 }
