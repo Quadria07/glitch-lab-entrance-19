@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
@@ -6,19 +5,11 @@ const TeamSection = () => {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
 
   const teamMembers = [
-    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST13.png", name: "Creative Director", role: "Lead Visionary" },
-    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST15.png", name: "Tech Architect", role: "Blockchain Engineer" },
-    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST9.png", name: "Art Director", role: "Digital Artist" },
-    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST8.png", name: "Strategy Lead", role: "Business Development" },
-    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST5.png", name: "Community Manager", role: "Engagement Specialist" },
-    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST14.png", name: "UX Designer", role: "Experience Curator" },
-    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST7.png", name: "Developer", role: "Full Stack Engineer" },
-    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST39.png", name: "Product Manager", role: "Innovation Lead" },
-    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/06/ChatGPT-Image-Jun-10-2025-09_37_29-AM-1.png", name: "Marketing Head", role: "Brand Strategist" },
-    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/06/ChatGPT-Image-Jun-10-2025-10_06_14-AM.png", name: "Research Lead", role: "Innovation Analyst" },
-    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/06/ChatGPT-Image-Jun-10-2025-09_44_52-AM-1-4.png", name: "Operations Manager", role: "Process Optimizer" },
-    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/06/ChatGPT-Image-Jun-16-2025-04_07_45-PM.png", name: "Quality Assurance", role: "Testing Specialist" },
-    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/06/file_0000000071e06243a65eb343855d2435-1.png", name: "Data Scientist", role: "Analytics Expert" }
+    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST13.png", name: "Uche Kaine", role: "FOUNDER" },
+    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST15.png", name: "Fakolade Elijah", role: "MANAGER" },
+    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST9.png", name: "Ajiboye Ohunayo", role: "ADS MANAGER" },
+    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST8.png", name: "Abioye Francis", role: "GRAPHICS DESIGNER" },
+    { img: "https://www.artheistlabs.com/wp-content/uploads/2025/04/AARTHEIST5.png", name: "Daniel Damilare", role: "GRAPHICS DESIGNER" }
   ];
 
   useEffect(() => {
