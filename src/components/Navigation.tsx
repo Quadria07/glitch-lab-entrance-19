@@ -10,14 +10,6 @@ const Navigation = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
-  };
-
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
@@ -40,22 +32,19 @@ const Navigation = () => {
         
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6 lg:space-x-8 font-orbitron font-bold text-sm tracking-wider">
-          {[
-            { name: 'ABOUT US', id: 'aboutus' },
-            { name: 'OUR TEAM', id: 'ourteam' }
-          ].map((item, index) => (
-            <motion.button
-              key={item.name}
-              onClick={() => scrollToSection(item.id)}
+          {['ABOUT US', 'OUR TEAM'].map((item, index) => (
+            <motion.a
+              key={item}
+              href={`#${item.toLowerCase().replace(' ', '')}`}
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               whileHover={{ scale: 1.1, y: -2 }}
               className="relative group hover:text-black transition-all duration-300"
             >
-              {item.name}
+              {item}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full" />
-            </motion.button>
+            </motion.a>
           ))}
         </div>
 
@@ -80,20 +69,18 @@ const Navigation = () => {
         className="md:hidden overflow-hidden bg-white/95 backdrop-blur-md border-t border-black/10"
       >
         <div className="px-4 py-4 space-y-4 font-orbitron font-bold text-sm tracking-wider">
-          {[
-            { name: 'ABOUT US', id: 'aboutus' },
-            { name: 'OUR TEAM', id: 'ourteam' }
-          ].map((item, index) => (
-            <motion.button
-              key={item.name}
-              onClick={() => scrollToSection(item.id)}
-              className="block py-2 text-black hover:text-gray-600 transition-colors duration-300 w-full text-left"
+          {['ABOUT US', 'OUR TEAM'].map((item, index) => (
+            <motion.a
+              key={item}
+              href={`#${item.toLowerCase().replace(' ', '')}`}
+              className="block py-2 text-black hover:text-gray-600 transition-colors duration-300"
+              onClick={() => setIsMobileMenuOpen(false)}
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              {item.name}
-            </motion.button>
+              {item}
+            </motion.a>
           ))}
         </div>
       </motion.div>
