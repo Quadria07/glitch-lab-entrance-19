@@ -27,16 +27,7 @@ const HeroSection = () => {
 
   const letterVariants = {
     hidden: { opacity: 0, y: 50, rotateX: -90 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      rotateX: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.8,
-        ease: [0.23, 1, 0.320, 1]
-      }
-    })
+    visible: { opacity: 1, y: 0, rotateX: 0 }
   };
 
   return (
@@ -94,10 +85,14 @@ const HeroSection = () => {
             {"ARTHEIST LABS".split("").map((letter, i) => (
               <motion.span
                 key={i}
-                custom={i}
                 variants={letterVariants}
                 initial="hidden"
                 animate="visible"
+                transition={{
+                  delay: i * 0.1,
+                  duration: 0.8,
+                  ease: [0.23, 1, 0.320, 1]
+                }}
                 whileHover={{ 
                   scale: 1.2, 
                   rotateY: 180,
